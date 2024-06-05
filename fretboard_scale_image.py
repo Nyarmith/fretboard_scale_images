@@ -334,7 +334,8 @@ def get_note_highlights(args):
                      'p': (250, 190, 190),
                      'l': (230, 190, 255),
                      'n': (0, 0, 128),
-                     'w': (255, 255, 255)}
+                     'w': (255, 255, 255),
+                     'z': (165, 165, 164)}
 
     for k, v in colors_to_rgb.items():
         colors_to_rgb[k] = [c/255 for c in v]
@@ -423,7 +424,8 @@ def parse_args():
                                 p - pink,
                                 l - lavender, 
                                 n - navy,
-                                w - white
+                                w - white,
+                                z - gray,
                             """,
                         type=str,
                         required=False)
