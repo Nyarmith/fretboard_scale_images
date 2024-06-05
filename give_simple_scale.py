@@ -88,6 +88,9 @@ def parse_args():
         minor_offsets = [2,1,2,2,1,2,2]
 
         note = args.scale[0]
+        if len(args.scale) > 1 and args.scale[1] == '#':
+            note += '#'
+
         pattern = major_offsets
         args.scale_notes = note
 
