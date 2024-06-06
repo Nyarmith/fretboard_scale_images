@@ -39,7 +39,7 @@ def parse_args():
                         type=str)
     
 
-    color_map = 'a:g,a#:c,b:l,b#:m,c:r,c#:o,d:y,d#:p,e:z,f:b,f#:t,g:k,g#:n'
+    color_map = 'a:g,a#:f,b:l,b#:m,c:r,c#:o,d:y,d#:p,e:z,f:b,f#:t,g:k,g#:n'
     parser.add_argument('-c', '--note-colors',
                         type=str,
                         default=color_map)
@@ -86,6 +86,8 @@ def parse_args():
         notes = ['a', 'a#', 'b', 'c', 'c#','d', 'd#','e', 'f', 'f#', 'g', 'g#']
         major_offsets = [2,2,1,2,2,2,1]
         minor_offsets = [2,1,2,2,1,2,2]
+        major_pentatonic = [2,2,3,2,3]
+        minor_pentatonic = [3,2,2,3,2]
 
         note = args.scale[0]
         if len(args.scale) > 1 and args.scale[1] == '#':
@@ -94,7 +96,13 @@ def parse_args():
         pattern = major_offsets
         args.scale_notes = note
 
-        if args.scale.find('min') != -1:
+        if args.scale.find('pen') != -1:
+            if args.scale.find('min')  != -1:
+                pattern = minor_pentatonic
+            else:
+                pattern = major_pentatonic
+
+        elif args.scale.find('min') != -1:
             pattern = minor_offsets
 
         for offset in pattern:
